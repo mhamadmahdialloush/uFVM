@@ -107,7 +107,7 @@ for iFile=1:length(files)
             theMeshField.phi(1:theNumberOfInteriorFaces) = cfdReadNonuniformList('internalField', fieldFilePath);
         end
         
-        % Read and store cfdBoundary field
+        % Read and store bounday field
         boundaries = theMesh.cfdBoundaryPatchesArray;
         theNumberOfBPatches = length(boundaries);
         
@@ -119,13 +119,13 @@ for iFile=1:length(files)
             iFaceEnd = iFaceStart+theBCInfo.numberOfBFaces-1;
             
             
-            % Get field cfdBoundary condition
+            % Get field bounday condition
             type = cfdGetKeyValueFromBlock('type', ['boundaryField/', theBCInfo.name], fieldFilePath);
             
-            % Store field cfdBoundary condition
+            % Store field bounday condition
             boundaryPatchRef.type = type;
             
-            % Read cfdBoundary value
+            % Read bounday value
             value = cfdGetKeyValueFromBlock('value', ['boundaryField/', theBCInfo.name], fieldFilePath);
             
             if isempty(value)
@@ -177,7 +177,7 @@ for iFile=1:length(files)
             theMeshField.phi(1:theNumberOfElements, :) = cfdReadNonuniformList('internalField', fieldFilePath);
         end
         
-        % Read and store cfdBoundary field
+        % Read and store bounday field
         boundaries = theMesh.cfdBoundaryPatchesArray;
         theNumberOfBPatches = length(boundaries);
         
@@ -193,13 +193,13 @@ for iFile=1:length(files)
             iElementEnd = iElementStart+numberOfBFaces-1;
             
             
-            % Get field cfdBoundary condition
+            % Get field bounday condition
             type = cfdGetKeyValueFromBlock('type', ['boundaryField/', theBCInfo.name], fieldFilePath);
             
-            % Store field cfdBoundary condition
+            % Store field bounday condition
             boundaryPatchRef.type = type;
             
-            % Read cfdBoundary value
+            % Read bounday value
             value = cfdGetKeyValueFromBlock('value', ['boundaryField/', theBCInfo.name], fieldFilePath);
             
             if isempty(value)

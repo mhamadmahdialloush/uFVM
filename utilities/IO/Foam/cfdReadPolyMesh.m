@@ -1,4 +1,4 @@
-function mesh = cfdReadPolyMesh
+function cfdReadPolyMesh
 %--------------------------------------------------------------------------
 %
 %  Written by the CFD Group @ AUB, Fall 2018
@@ -38,7 +38,7 @@ cfdReadNeighbourFile(neighbourFile);
 % Read cfdBoundaries
 cfdReadBoundaryFile(cfdBoundaryFile);
 
-% Check if cavity
+% Check if cavity (i.e. no pressure prescribed boundaries)
 cfdCheckIfCavity;
 
 % Process topology

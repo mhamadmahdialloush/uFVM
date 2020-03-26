@@ -214,7 +214,7 @@ theNumberOfBPatches = cfdGetNumberOfBPatches;
 theNodeCentroids = cfdGetNodeCentroids;
 theFaceNodeIndices = cfdGetFaceNodeIndices;
 
-% Fill in vertices anf faces arrays
+% Fill in vertices and faces arrays
 for iNode=1:theNumberOfNodes
     v(iNode,:) = theNodeCentroids(iNode,:);
 end
@@ -232,11 +232,13 @@ patch('vertices', v, 'faces', f, 'FaceColor', [0.5 0.5 0.5], 'FaceAlpha', 1, 'Ed
 % Adjusts to figure
 rotate3d;
 
-[minLimit_x, maxLimit_x, minLimit_y, maxLimit_y, minLimit_z, maxLimit_z] = cfdGetBoundingBox;
+view(45,45);
 
-length_scale = max([maxLimit_x-minLimit_x maxLimit_y-minLimit_y maxLimit_z-minLimit_z])*0.0/4;
+% [minLimit_x, maxLimit_x, minLimit_y, maxLimit_y, minLimit_z, maxLimit_z] = cfdGetBoundingBox;
 
-axis([2*minLimit_x-length_scale, 2*maxLimit_x+length_scale, 2*minLimit_y-length_scale, 2*maxLimit_y+length_scale, 2*minLimit_z-length_scale, 2*maxLimit_z+length_scale]);
+% length_scale = max([maxLimit_x-minLimit_x maxLimit_y-minLimit_y maxLimit_z-minLimit_z])*0.04;
+% 
+% axis([2*minLimit_x-length_scale, 2*maxLimit_x+length_scale, 2*minLimit_y-length_scale, 2*maxLimit_y+length_scale, 2*minLimit_z-length_scale, 2*maxLimit_z+length_scale]);
 
 % Set field list
 handles.fieldsList.String = fieldnames(Region.postProcessing);

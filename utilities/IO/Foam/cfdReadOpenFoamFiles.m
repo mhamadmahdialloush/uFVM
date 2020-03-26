@@ -6,7 +6,7 @@ function cfdReadOpenFoamFiles
 %==========================================================================
 % Routine Description:
 %   This function opens OpenFoam files and reads required data (mesh, 
-%   system files, cfdTransport properties ... etc)
+%   system files, transport properties ... etc)
 %--------------------------------------------------------------------------
 %
 % Read and Setup OpenFOAM Mesh from "constant" Directory
