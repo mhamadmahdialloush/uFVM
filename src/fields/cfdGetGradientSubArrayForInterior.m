@@ -10,7 +10,7 @@ function phiGrad = cfdGetGradientSubArrayForInterior(theFieldName, iComponent)
 
 global Region;
 
-if strcmp(Region.fluid.(theFieldName).type, 'scfdUrfaceScalarField')
+if strcmp(Region.fluid.(theFieldName).type, 'surfaceScalarField')
     phiGrad = Region.fluid.(theFieldName).phiGradient(1:Region.mesh.numberOfInteriorFaces, :);
 elseif strcmp(Region.fluid.(theFieldName).type, 'volScalarField')
     phiGrad = Region.fluid.(theFieldName).phiGradient(1:Region.mesh.numberOfElements, :);

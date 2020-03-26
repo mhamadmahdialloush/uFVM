@@ -10,7 +10,7 @@ function phiGrad_b = cfdGetGradientSubArrayForBoundaryPatch(theFieldName, iBPatc
 
 global Region;
 
-if strcmp(Region.fluid.(theFieldName).type, 'scfdUrfaceScalarField')
+if strcmp(Region.fluid.(theFieldName).type, 'surfaceScalarField')
     iFaceStart = Region.mesh.cfdBoundaryPatchesArray{iBPatch}.startFaceIndex;
     iFaceEnd = iFaceStart+Region.mesh.cfdBoundaryPatchesArray{iBPatch}.numberOfBFaces-1;
     iBFaces = iFaceStart:iFaceEnd;

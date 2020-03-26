@@ -17,7 +17,7 @@ if strcmp(theFoamField.class,'volScalarField')
 elseif strcmp(theFoamField.class,'volVectorField')
     theMeshField.type = 'Vector';
     theMeshField.locale = 'Elements';
-elseif strcmp(theFoamField.class,'scfdUrfaceScalarField')
+elseif strcmp(theFoamField.class,'surfaceScalarField')
     theMeshField.type = 'Scalar';
     theMeshField.locale = 'Faces';
 end
@@ -36,7 +36,7 @@ if strcmp(theFoamField.class,'volScalarField')
 elseif strcmp(theFoamField.class,'volVectorField')
     theMeshField.phi = zeros(numberOfElements + numberOfBElements, 3);
     theMeshField.phiGradient = zeros(numberOfElements + numberOfBElements, 3, 3);
-elseif strcmp(theFoamField.class,'scfdUrfaceScalarField')
+elseif strcmp(theFoamField.class,'surfaceScalarField')
     theMeshField.phi = zeros(numberOfInteriorFaces + numberOfBFaces, 1);
 end
 
@@ -50,7 +50,7 @@ if strcmp(internalField.valueType, 'uniform')
         for iComponent=1:3
             theMeshField.phi(1:numberOfElements, iComponent) = value(iComponent) .* ones(numberOfElements, 1);
         end
-    elseif strcmp(theFoamField.class, 'scfdUrfaceScalarField')
+    elseif strcmp(theFoamField.class, 'surfaceScalarField')
         theMeshField.phi(1:numberOfInteriorFaces, 1) = value .* ones(numberOfInteriorFaces, 1);
     end
 elseif strcmp(internalField.valueType, 'nonuniform')
@@ -60,7 +60,7 @@ elseif strcmp(internalField.valueType, 'nonuniform')
         for iComponent=1:3
             theMeshField.phi(1:numberOfElements, iComponent) = internalField.value(:, iComponent);
         end
-    elseif strcmp(theFoamField.class, 'scfdUrfaceScalarField')
+    elseif strcmp(theFoamField.class, 'surfaceScalarField')
         theMeshField.phi(1:numberOfInteriorFaces, 1) = internalField.value;       
     end        
 end
@@ -99,7 +99,7 @@ for iPatch=1:theNumberOfPatches
                 value = num2str(cfdBoundaryField.value);
                 phi_b = cfdComputeFormulaAtLocale(value,theLocale,'Scalar');
                 phi(iBElements) = phi_b;
-            elseif strcmp(theFoamField.class, 'scfdUrfaceScalarField')
+            elseif strcmp(theFoamField.class, 'surfaceScalarField')
                 value = num2str(cfdBoundaryField.value); 
                 phi_b = cfdComputeFormulaAtLocale(value,theLocale,'Scalar');
                 phi(iBFaces) = phi_b;
@@ -110,7 +110,7 @@ for iPatch=1:theNumberOfPatches
                 phi(iBElements, :) = value;                
             elseif strcmp(theFoamField.class, 'volScalarField')
                 phi(iBElements) = value;
-            elseif strcmp(theFoamField.class, 'scfdUrfaceScalarField')
+            elseif strcmp(theFoamField.class, 'surfaceScalarField')
                 phi(iBFaces) = value;
             end             
         end        
@@ -175,6 +175,6 @@ end
 theMeshField.phi = phi;
 
 % Evaluate gradient based on green gauss method
-if ~strcmp(theFoamField.class, 'scfdUrfaceScalarField')
+if ~strcmp(theFoamField.class, 'surfaceScalarField')
     theMeshField.phiGradient = computeGradientGauss0(theMeshField.phi, theMesh);
 end

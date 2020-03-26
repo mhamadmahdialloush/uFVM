@@ -10,7 +10,7 @@ function phi = cfdGetGradientDataArray(theFieldName, iComponent)
 
 global Region;
 
-if strcmp(Region.fluid.(theFieldName).type, 'scfdUrfaceScalarField')
+if strcmp(Region.fluid.(theFieldName).type, 'surfaceScalarField')
     phi = Region.fluid.(theFieldName).phiGradient;
 elseif strcmp(Region.fluid.(theFieldName).type, 'volScalarField')
     phi = Region.fluid.(theFieldName).phiGradient;

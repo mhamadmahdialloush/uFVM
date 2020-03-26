@@ -14,7 +14,7 @@ end
 
 global Region;
 
-if strcmp(Region.fluid.(theFieldName).type, 'scfdUrfaceScalarField')
+if strcmp(Region.fluid.(theFieldName).type, 'surfaceScalarField')
     phi = Region.fluid.(theFieldName).prevIter.phi(1:Region.mesh.numberOfInteriorFaces);    
 else
     phi = Region.fluid.(theFieldName).prevIter.phi(1:Region.mesh.numberOfElements, iComponent);
