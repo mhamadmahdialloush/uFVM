@@ -1,5 +1,5 @@
 ufvm v 1.5
-Open-source CFD package for academic purposes, done by CFD group the American University of Beirut
+Open-source CFD package for academic purposes, done by CFD group at the American University of Beirut
 contact us at: cfd@aub.edu.lb
 
 Note:
