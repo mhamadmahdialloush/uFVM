@@ -111,7 +111,7 @@ local_FluxFf = - mu_f.*geoDiff_f;
 local_FluxVf = - mu_f.*dot(UGrad_f(:,:,iComponent)',Tf')';
 
 % Add transpose term
-local_FluxVf = local_FluxVf + mu_f.*dot(tUGrad_f(:,:,iComponent)',Sf')';
+local_FluxVf = local_FluxVf - mu_f.*dot(tUGrad_f(:,:,iComponent)',Sf')';
 
 % Add Bulk viscosity term
 if cfdIsCompressible
